@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Logare - Grădina App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Logare</h1>
+        <form id="login-form" method="POST" action="/api/users/login">
+            <label for="username">User:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Parolă:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Logare</button>
+            <p>Nu ai cont? <a href="register.html">Inregistreăza-te aici</a></p>
+        </form>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

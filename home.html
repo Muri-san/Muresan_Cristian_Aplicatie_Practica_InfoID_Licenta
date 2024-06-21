@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Grădina App - Home</title>
+    <style>
+        /* Stiluri pentru calendar */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .calendar div {
+            padding: 10px;
+            background-color: #e0e0e0;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .calendar .header {
+            font-weight: bold;
+            background-color: #5cb85c;
+            color: white;
+        }
+        .calendar .day {
+            background-color: #f4f4f4;
+        }
+        .calendar .today {
+            background-color: #206b20;
+            color: white;
+        }
+        .calendar .selected {
+            background-color: #34a366;
+            color: white;
+        }
+        .notification-header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #ccc;
+        }
+        .notification-header button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        .notification-header button img {
+            margin-right: 5px;
+        }
+        .notification-header button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Grădina App</h1>
+    </header>
+    <main>
+        <h2 style="text-align: center;">Calendar</h2>
+        <div class="calendar-container">
+            <div class="calendar" id="calendar"></div>
+            <div class="calendar-controls">
+                <button id="calendar-prev"><<</button>
+                <span id="calendar-month"></span>
+                <button id="calendar-next">>></button>
+            </div>
+            <button id="calendar-toggle">Auto/Manual</button>
+        </div>
+        
+        <blockquote id="nature-quote">„Natura nu se grăbește dar totul este realizat.” - Lao Tzu</blockquote>
+        <section id="main-content">
+            
+        </section>
+        <button id="notification-icon">Notificări</button>
+        <div id="notification-container" class="notification-container" style="display: none;">
+            <div class="notification-header">
+                <button id="update-notifications">
+                    <img src="img/refresh.png" alt="Actualizează" width="20" height="20">
+                    Actualizare
+                </button>
+            </div>
+            <div id="notification-list" class="scrollable-container"></div>
+        </div>
+
+    </main>
+    <footer>
+        <nav>
+            <button id="plantoteca-nav">Plantotecă</button>
+            <button id="gradina-nav">Grădina Mea</button>
+            <button id="istoric-nav">Istoric</button>
+        </nav>
+    </footer> 
+    <script src="js/main.js"></script>
+</body>
+</html>

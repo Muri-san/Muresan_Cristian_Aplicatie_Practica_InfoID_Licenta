@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Plantotecă</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Plantotecă</h1>
+        <div id="plant-list" class="scrollable-container"></div>
+        <div>
+        <button id="add-plant">Adaugă Plantă</button>
+        <button id="delete-plant">Șterge Plante</button>
+        </div>
+        <div id="add-plant-form" style="display:none;">
+            <form id="plant-form">
+                <label for="plant-name">Nume Plantă:</label>
+                <input type="text" id="plant-name" name="name" required>
+                
+                <label for="plant-type">Tip Plantă:</label>
+                <input type="text" id="plant-type" name="type" required>
+                
+                <label for="plant-category">Categorie Plantă:</label>
+                <input type="text" id="plant-category" name="category" required>
+                
+                <label for="plant-period">Perioadă Plantare:</label>
+                <select id="plant-period" name="plant_period" multiple>
+                    <option value="1">Ianuarie</option>
+                    <option value="2">Februarie</option>
+                    <option value="3">Martie</option>
+                    <option value="4">Aprilie</option>
+                    <option value="5">Mai</option>
+                    <option value="6">Iunie</option>
+                    <option value="7">Iulie</option>
+                    <option value="8">August</option>
+                    <option value="9">Septembrie</option>
+                    <option value="10">Octombrie</option>
+                    <option value="11">Noiembrie</option>
+                    <option value="12">Decembrie</option>  
+                </select>
+                
+                <label for="prune-period">Perioadă Tundere:</label>
+                <select id="prune-period" name="prune_period" multiple>
+                    <option value="1">Ianuarie</option>
+                    <option value="2">Februarie</option>
+                    <option value="3">Martie</option>
+                    <option value="4">Aprilie</option>
+                    <option value="5">Mai</option>
+                    <option value="6">Iunie</option>
+                    <option value="7">Iulie</option>
+                    <option value="8">August</option>
+                    <option value="9">Septembrie</option>
+                    <option value="10">Octombrie</option>
+                    <option value="11">Noiembrie</option>
+                    <option value="12">Decembrie</option> 
+                </select>
+                
+                <label for="fertilize-period">Perioadă Fertilizare:</label>
+                <select id="fertilize-period" name="fertilize_period" multiple>
+                    <option value="1">Ianuarie</option>
+                    <option value="2">Februarie</option>
+                    <option value="3">Martie</option>
+                    <option value="4">Aprilie</option>
+                    <option value="5">Mai</option>
+                    <option value="6">Iunie</option>
+                    <option value="7">Iulie</option>
+                    <option value="8">August</option>
+                    <option value="9">Septembrie</option>
+                    <option value="10">Octombrie</option>
+                    <option value="11">Noiembrie</option>
+                    <option value="12">Decembrie</option>                     
+                </select>
+                
+                <label for="harvest-period">Perioadă Recoltare:</label>
+                <select id="harvest-period" name="harvest_period" multiple>
+                    <option value="1">Ianuarie</option>
+                    <option value="2">Februarie</option>
+                    <option value="3">Martie</option>
+                    <option value="4">Aprilie</option>
+                    <option value="5">Mai</option>
+                    <option value="6">Iunie</option>
+                    <option value="7">Iulie</option>
+                    <option value="8">August</option>
+                    <option value="9">Septembrie</option>
+                    <option value="10">Octombrie</option>
+                    <option value="11">Noiembrie</option>
+                    <option value="12">Decembrie</option> 
+                </select>
+                
+                <button type="submit">Adaugă Plantă</button>
+            </form>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

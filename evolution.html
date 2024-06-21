@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Grădina App - Evoluție Plantă</title>
+</head>
+<body>
+    <header>
+        <h1>Grădina App - Evoluție Plantă</h1>
+    </header>
+    <main>
+        <h2 id="plant-name"></h2>
+        <div id="evolution-list"></div>
+        <textarea id="observation" maxlength="400" placeholder="Adaugă observație..."></textarea>
+        <button id="add-evolution">Adaugă Evoluție</button>
+    </main>
+    <footer>
+        <nav>
+            <button id="plantoteca-nav">Plantotecă</button>
+            <button id="gradina-nav">Gradina Mea</button>
+            <button id="istoric-nav">Istoric</button>
+        </nav>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gardenId = new URLSearchParams(window.location.search).get('gardenId'); 
+            const plantNameElement = document.getElementById('plant-name');
+            const evolutionList = document.getElementById('evolution-list');
+            const observationInput = document.getElementById('observation');
+            const addEvolutionButton = document.getElementById('add-evolution');
+
+            const loadPlantDetails = async () => {
+                const response = await fetch(`/api/garden/${gardenId}`); 
+                if (response.ok) {
+                    const plant = await response.json();
+                    plantNameElement.textContent = `${plant.name} - ${plant.type}`;
+                } else {
+                    const errorData = await response.json();
+                    console.error(errorData.error);
+                }
+            };
+
+            const loadEvolution = async () => {
+                const response = await fetch(`/api/evolution/${gardenId}`);
+                if (response.ok) {
+                    const evolution = await response.json();
+                    evolutionList.innerHTML = evolution.map(e => `
+                        <div class="evolution-entry">
+                            <p>${new Date(e.date).toLocaleDateString()}: ${e.observation}</p>
+                        </div>
+                    `).join('');
+                } else {
+                    const errorData = await response.json();
+                    console.error(errorData.error);
+                }
+            };
+
+            const addEvolution = async () => {
+                const observation = observationInput.value;
+                const date = new Date().toISOString().split('T')[0];
+                const response = await fetch('/api/evolution/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        gardenId,
+                        date,
+                        observation
+                    })
+                });
+
+                if (response.ok) {
+                    observationInput.value = '';
+                    loadEvolution();
+                } else {
+                    const errorData = await response.json();
+                    console.error(errorData.error);
+                }
+            };
+
+            const navigateToPage = (page) => {
+                window.location.href = `${page}.html`;
+            };
+
+            document.getElementById('plantoteca-nav').addEventListener('click', () => navigateToPage('plantoteca'));
+            document.getElementById('gradina-nav').addEventListener('click', () => navigateToPage('gradina_mea'));
+            document.getElementById('istoric-nav').addEventListener('click', () => navigateToPage('istoric'));
+
+
+            addEvolutionButton.addEventListener('click', addEvolution);
+            loadPlantDetails();
+            loadEvolution();
+        });
+    </script>
+</body>
+</html>
